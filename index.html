@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Codystar&family=Fredoka+One&family=Hanalei+Fill&family=Libre+Baskerville&family=Forum&family=Rampart+One&family=Sacramento&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <title>WhereToWeather</title>
+</head>
+
+<body>
+
+    <header>
+        <h1 id="header">Where To Weather <i class="material-icons md-48">cloud</i></h1>
+    </header>
+
+    <div class="grid">
+        <aside id="citySearch">
+            <h2 id="city">Search for a city:</h2>
+            <span id="searchFieldAndBtn">
+                <input id="cityInput" type="search" placeholder="Anywhere">
+                <button id="searchBtn"  class="material-icons md-24">
+                    search
+                    <!-- travel_explore -->
+                    <!-- edit_location_alt -->
+                </button>
+            </span>
+            <ul id="cityBank"></ul>
+        </aside>
+
+        <div id="currentCityCard">
+            <span id="cityCardHeader">
+                
+                <h2 id="currentCity">Current
+                    <i id="bolt" class="material-icons">bolt</i>
+                    Weather
+                </h2>
+            </span>
+            <div id="subGrid">
+                <img id="tempIcon"> </img>
+                <div id="cityInfo">
+                    <p>
+                        <span class="sameLine">
+                            Date:
+                            <span id="date"></span>
+                        </span>
+                    </p>
+                    <p id="yourCity">City: &nbsp;
+                        <span class="material-icons">
+                            local_airport
+                        </span>
+                    </p>
+                    
+                    <p id="temp">temp: &nbsp;
+                        <span class="material-icons">
+                            thermostat
+                        </span>
+                       
+                    </p>
+                    
+
+                </div>
+                <div id="addedInfo">
+                    <p id="humid">humidity: &nbsp;
+                        <span class="material-icons">
+                            hot_tub
+                        </span>
+                    </p>
+
+                    <p id="wind">Wind speed: &nbsp;
+                        <span class="material-icons">
+                            air
+                        </span>
+                    </p>
+                    <p id="uv">UV Index: &nbsp;
+                        <span class="material-icons">
+                            solar_power
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="cards">
+            <div id="day0">
+                <p id="forecastDate0">Day 1</p>
+                <span id="card1icon" class="material-icons">
+                    emoji_emotions
+                </span>
+                <img id="weatherIcon0"></img>
+                <p id="tempFore0"></p>
+                <p id="windyFore0"></p>
+                <p id="humidityFore0"></p>
+
+            </div>
+            <div id="day1">
+                <p id="forecastDate1">Day 2</p>
+                <span id="card2icon" class="material-icons">
+                    emoji_emotions
+                </span>
+                <img id="weatherIcon1"></img>
+                <p id="tempFore1"></p>
+                <p id="windyFore1"></p>
+                <p id="humidityFore1"></p>
+            </div>
+            <div id="day2">
+                <p id="forecastDate2">Day 3</p>
+                <span id="card3icon" class="material-icons">
+                    emoji_emotions
+                </span>
+                <img id="weatherIcon2"></img>
+                <p id="tempFore2"></p>
+                <p id="windyFore2"></p>
+                <p id="humidityFore2"></p>
+            </div>
+            <div id="day3">
+                <p id="forecastDate3">Day 4</p>
+                <span id="card4icon" class="material-icons">
+                    emoji_emotions
+                </span>
+                <img id="weatherIcon3"></img>
+                <p id="tempFore3"></p>
+                <p id="windyFore3"></p>
+                <p id="humidityFore3"></p>
+            </div>
+            <div id="day4">
+                <p id="forecastDate4">Day 5</p>
+                <span id="card5icon" class="material-icons">
+                    emoji_emotions
+                </span>
+                <img id="weatherIcon4"></img>
+                <p id="tempFore4"></p>
+                <p id="windyFore4"></p>
+                <p id="humidityFore4"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./assets/index.js"></script>
+</body>
+
+</html>
