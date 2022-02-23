@@ -226,6 +226,21 @@ html{
     font-size: 24px;
 }
 
+#cityBank button{
+    font-size: 20px;
+    color: white;
+    font-family: 'Codystar', cursive;
+    background-color: black;
+    border: white solid 1px;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+#cityBank li{
+    margin: 5px;
+}
+
 
 
 
