@@ -11,28 +11,39 @@ Below are listed requirements for the application and associated pictures:
 
 ### -A weather dashboard with form inputs:
 
+
 <img width="1685" alt="picture of final layout" src="https://user-images.githubusercontent.com/95048609/155853787-05b88142-a132-49d6-a674-29ae4ca53595.png">
+
 
 ### -When I search for a city, then I am presented with current and future conditions for that city and that city is added to the search history:
 
+
 <img width="1065" alt="Picture of search bar and added cities below" src="https://user-images.githubusercontent.com/95048609/155853925-9ff4b047-7c2e-4426-87d1-0c6c68041299.png">
+
 
 ### -When I view current weather conditions for that city, then I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index:
 
+
 <img width="1103" alt="Picture of the current weather section" src="https://user-images.githubusercontent.com/95048609/155853934-3ac33859-e40d-4793-8e09-db63d6149510.png">
 
+
 ### -When I view the UV index, then I am presented with a color that indicates whether the conditions are favorable, moderate, or severe:
+
 
 <img width="1625" alt="Picture of UV Index section displayed with different colors" src="https://user-images.githubusercontent.com/95048609/155853947-3d831ba4-2bee-4b42-8bc7-cbbd4fb13cda.png">
 
 
+
 ### -When I view future weather conditions for that city, then I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity: 
+
 
 <img width="1571" alt="Picture of future five day weather forecast section" src="https://user-images.githubusercontent.com/95048609/155854007-120cb0e2-86af-4711-958d-e19ef6700039.png">
 
 ### -When I click on a city in the search history, then I am again presented with current and future conditions for that city:
 
 This functionality is show by visiting the deployment with the link below:
+
+https://bennygo3.github.io/WhereToWeather/
 
 
 ### Future development:
