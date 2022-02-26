@@ -35,5 +35,5 @@ Below are listed requirements for the application and associated pictures:
 This functionality is show by visiting the deployment with the link below:
 
 
-###Future development:
+### Future development:
 I plan on altering layout for multiple viewports and add a clear history button to get rid of recent searches.
