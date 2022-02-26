@@ -2,15 +2,17 @@ const app = {
     init: () => {
         document
             .getElementById('searchBtn')
-            .addEventListener('click', app.getWeather);
-            
+            .addEventListener('click', function (event) {
+                let city = document.getElementById('cityInput').value;
+                app.getWeather(city)
+            });
+
         // document
         // .getElementById('searchBtn')
         // .addEventListener('click', app.get5Day);
 
     },
-    getWeather: (ev) => {
-        let city = document.getElementById('cityInput').value;
+    getWeather: (city) => {
         let key = '9dd2102ab00251bf95475e58c5ecfec5';
         let units = 'imperial';
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${key}`;
@@ -24,10 +26,10 @@ const app = {
                 console.log(data)
                 app.get5Day(data.coord.lat, data.coord.lon)
                 app.showWeather(data);
-                // app.storeCity(data, data.name);
-                app.makeBtn(data, data.name);
-                
-            
+                app.storeCity(data.name);
+                // app.makeBtn(data, data.name);
+
+
             })
             .catch(console.error)
     },
@@ -40,10 +42,11 @@ const app = {
                 if (!resp.ok) throw new Error(resp.statusText);
                 return resp.json();
             })
-            .then((data) => {
-                console.log(data);
-                app.show5Day(data);
-                app.storeCity(data);
+            .then((data2) => {
+                console.log(data2);
+                app.show5Day(data2);
+                // app.makeBtn(data2);
+
             })
             .catch(console.error)
     },
@@ -61,24 +64,24 @@ const app = {
 
         localStorage.setItem("pastCity", JSON.stringify(data));
     },
-    show5Day: (data) => {
-        // console.log(data);
-        
+    show5Day: (data2) => {
+        console.log(data2);
+
         for (i = 0; i < 5; i++) {
-            
-            var forecastDate = moment.unix(data.daily[i].dt).format('dddd, MM/DD/YYYY');
+
+            var forecastDate = moment.unix(data2.daily[i].dt).format('dddd, MM/DD/YYYY');
             $('#forecastDate' + i).text(forecastDate);
-            var dayIcon = data.daily[i].weather[0].icon
+            var dayIcon = data2.daily[i].weather[0].icon
             $('#weatherIcon' + i).attr('src', 'https://openweathermap.org/img/wn/' + dayIcon + '@2x.png');
-            var temp1 = data.daily[i].temp.day
+            var temp1 = data2.daily[i].temp.day
             $('#tempFore' + i).text("temp: " + temp1 + " degrees");
-            var windyFore = data.daily[i].wind_speed
+            var windyFore = data2.daily[i].wind_speed
             $('#windyFore' + i).text("Wind speed: " + windyFore + " mph");
-            var humidityFore = data.daily[i].humidity
+            var humidityFore = data2.daily[i].humidity
             $('#humidityFore' + i).text("Humidity: " + humidityFore + "%");
 
             // hoisted to current day and city card or func showWeather
-            var uv = data.current.uvi
+            var uv = data2.current.uvi
             $('#uv').text("UV Index: " + uv);
 
             // this functions! will revisit to add a pop up message for each indicator so that
@@ -95,59 +98,77 @@ const app = {
             if (uv > 7) {
                 document.getElementById("uv").style.color = "red";
             }
-           
-
-            
+            localStorage.setItem("fiveDay", JSON.stringify(data2));
         }
 
     },
-    storeCity: (data, name)=> { // trying to save multiple locations to an empty array for a click on callback of data
-                                // after they are appended below the search bar
+    storeCity: (name) => { // trying to save multiple locations to an empty array for a click on callback of data
+        // after they are appended below the search bar
         var recentLocations = [];
-        var fiveDayResults = [data];
+        if (localStorage.getItem("history")) {
+            recentLocations = JSON.parse(localStorage.getItem('history'))
+        }
+
+        // var fiveDayResults = [data];
         // for(i = 0; i < fiveDayResults.length; i++){
-        fiveDayResults.forEach(function (data){
-            recentLocations.push({
-                temp1: data.daily[i].temp.day
-            });
-        });
-        // recentLocations.push(fiveDayResults);
-        localStorage.setItem("fiveDay", JSON.stringify(recentLocations));
+        // fiveDayResults.forEach(function (data){
+        //     recentLocations.push({
+        //         temp1: data.daily[i].temp.day
+        //     });
+        // });
+        if (!recentLocations.includes(name.toLowerCase())) {
+            recentLocations.push(name.toLowerCase());
+        }
 
+        localStorage.setItem("history", JSON.stringify(recentLocations));
+        app.makeBtn(recentLocations)
     },
-    makeBtn: (data, name) => {
-        console.log(data);
-        console.log(name);
+    makeBtn: (arr) => {
+        // console.log(data);
+        // console.log(name);
         var add = document.getElementById('cityBank');
-        var addLi = document.createElement('li');
-        var addBtn = document.createElement('button');
-        addLi.append(addBtn);
-        add.append(addLi);
-        addBtn.innerHTML = name;
-        addLi.setAttribute("fiveDay", data)
-        // add.append(name);
-        // console.log(addLi);
-        // var savedCityList = JSON.parse(localStorage.getItem("fiveDay"));
-        // if (savedCityList) {
-        //     addLi.addEventListener("click", function () {
-        //         (this.getAttribute("fiveDay"))
-        //         console.log(temp1);
+        add.innerHTML = "";
 
-        //     })     
-        // }
+        for (i = 0; i < arr.length; i++) {
+            var addLi = document.createElement('li');
+            var addBtn = document.createElement('button');
+            addBtn.innerHTML = arr[i];
+            addLi.append(addBtn);
+
+            addLi.addEventListener("click", function (ev) {
+                console.log(ev.target.textContent)
+                app.getWeather(ev.target.textContent)
+                // var city = data.name;
+                // $('#yourCity').text("City:" + " " + city);
+                // var temp = data.main.temp;
+                // $('#temp').text("Temp:" + " " + temp + " degrees");
+                // var tempIcon = data.weather[0].icon;
+                // $('#tempIcon').attr('src', `https://openweathermap.org/img/wn/${tempIcon}@4x.png`);
+                // var humid = data.main.temp;
+                // $('#humid').text("Humidity:" + " " + humid + "%");
+                // var wind = data.wind.speed;
+                // $('#wind').text("Wind speed:" + " " + wind + " mph");
+            })
+            add.append(addLi);
+        }
+        // addLi.setAttribute("pastCity", data);
 
         
-
 
     }
 }
 
 app.init();
 
+
 var bAPIKey = "f96fdb87a2d230037fd794660dc95fbd";
 var city;
 var recentLocations = [];
-// city search container
+if (localStorage.getItem("history")) {
+    recentLocations = JSON.parse(localStorage.getItem('history'))
+}
+app.makeBtn(recentLocations)
+
 var searchContainer = document.getElementById('citySearch');
 var citySearchBar = document.getElementById('cityInput');
 var searchBtn = document.getElementById('searchBtn');
@@ -156,15 +177,15 @@ var dateEl = document.getElementById('date')
 var today = moment().format("dddd, MMM Do YY");
 dateEl.textContent = today;
 
-// function cityClick(){
-//  document.getElementById('searchBtn')
-//  .addEventListener('click', storeCity);
-// }
+
 
 var recentLocations = [];
 var pastCity = "";
 
 // function addHistory(city)
+
+
+// graveyard:
 
 // function storeCity(){
 //     var recentLocations = [];
