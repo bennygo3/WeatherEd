@@ -1,8 +1,9 @@
 body{
-    background-image: url(images/windowhorizontal.jpeg);
-    background-size:cover;
+    /* background-image: url(images/windowhorizontal.jpeg); */
+    background-color:rgb(24, 197, 255);
+    /* background-size:cover;
     text-align: center;
-    height: 100px;
+    height: 100px; */
 }
 
 #header{
@@ -21,7 +22,7 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    
+    outline: solid 1px white;
 }
 
 .search{
@@ -44,8 +45,7 @@ body{
     border-radius: 10px;
     margin: auto 5px auto 120px ;
     width: 380px;
-    
-    overflow: auto;
+    outline: solid 1px white;
 }
 
 #city{
@@ -63,6 +63,7 @@ body{
     border: black solid 0.5px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
+    
 }
 
 
@@ -88,7 +89,7 @@ body{
     padding: 20px;
     width: 1000px;
     max-height: 520px;
-    /* float: left; */
+    outline: solid 1px white;
     
 }
 
@@ -109,11 +110,13 @@ body{
     margin-top: -40px;
     color: yellow;
 }
+
 #subGrid{
     display: grid;
     flex-wrap: wrap;
     justify-items: center;
 }
+
 #cityInfo{
     display: flex;
     flex-direction: column;
@@ -123,8 +126,6 @@ body{
     margin-left: 20px;
     font-size: 29px;
     grid-column: 1;
-    
-    
 }
 
 #addedInfo{
@@ -141,8 +142,9 @@ body{
 
 #cards{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    text-align: center;
     gap: 9px;
     margin-bottom: 20px;
     margin-left: auto;
@@ -159,21 +161,16 @@ body{
     width: 250px;
     font-size: 28px;
     margin-bottom: 20px;
+    outline: solid 1px white;
 }
 
-/* #day4{
-    margin-right: 7px;
-} */
 
-#card1icon, #card2icon, #card4icon,#card5icon{
-    font-size: 60px;
+
+#card1icon, #card2icon, #card3icon, #card4icon,#card5icon{
+    font-size: 50px;
 }
 
-#card3icon{
-    font-size: 60px;
-    color: white;
 
-}
 
 #tempFore0, #windyFore0, #humidityFore0,
 #tempFore1, #windyFore1, #humidityFore1,
@@ -229,7 +226,10 @@ body{
     -webkit-font-smoothing: antialiased;
 }
 /* cloud icon in header */
-.material-icons.md-48{ font-size: 62px;}
+.material-icons.md-48{ 
+    font-size: 62px;
+}
+
 /* search icon location in search section*/
 .material-icons.md-24{ 
     font-size: 25px;

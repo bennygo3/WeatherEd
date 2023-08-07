@@ -7,9 +7,6 @@ const app = {
                 app.getWeather(city)
             });
 
-        // document
-        // .getElementById('searchBtn')
-        // .addEventListener('click', app.get5Day);
 
     },
     getWeather: (city) => {
@@ -28,8 +25,6 @@ const app = {
                 app.showWeather(data);
                 app.storeCity(data.name);
                 // app.makeBtn(data, data.name);
-
-
             })
             .catch(console.error)
     },
@@ -46,7 +41,6 @@ const app = {
                 console.log(data2);
                 app.show5Day(data2);
                 // app.makeBtn(data2);
-
             })
             .catch(console.error)
     },
@@ -57,7 +51,7 @@ const app = {
         $('#temp').text("Temp:" + " " + temp + " degrees");
         var tempIcon = data.weather[0].icon;
         $('#tempIcon').attr('src', `https://openweathermap.org/img/wn/${tempIcon}@4x.png`);
-        var humid = data.main.temp;
+        var humid = data.main.humidity;
         $('#humid').text("Humidity:" + " " + humid + "%");
         var wind = data.wind.speed;
         $('#wind').text("Wind speed:" + " " + wind + " mph");
@@ -69,7 +63,7 @@ const app = {
 
         for (i = 0; i < 5; i++) {
 
-            var forecastDate = moment.unix(data2.daily[i].dt).format('dddd, MM/DD/YYYY');
+            var forecastDate = moment.unix(data2.daily[i].dt).format('ddd, MM/DD/YYYY');
             $('#forecastDate' + i).text(forecastDate);
             var dayIcon = data2.daily[i].weather[0].icon
             $('#weatherIcon' + i).attr('src', 'https://openweathermap.org/img/wn/' + dayIcon + '@2x.png');
@@ -84,8 +78,6 @@ const app = {
             var uv = data2.current.uvi
             $('#uv').text("UV Index: " + uv);
 
-            // this functions! will revisit to add a pop up message for each indicator so that
-            // .. it will be more apparent for the user
             if (uv < 2) {
                 document.getElementById("uv").style.color = "green";
             }
@@ -102,20 +94,14 @@ const app = {
         }
 
     },
-    storeCity: (name) => { // trying to save multiple locations to an empty array for a click on callback of data
+    storeCity: (name) => { 
+        // save multiple locations to an empty array for a click on callback of data
         // after they are appended below the search bar
         var recentLocations = [];
         if (localStorage.getItem("history")) {
             recentLocations = JSON.parse(localStorage.getItem('history'))
         }
 
-        // var fiveDayResults = [data];
-        // for(i = 0; i < fiveDayResults.length; i++){
-        // fiveDayResults.forEach(function (data){
-        //     recentLocations.push({
-        //         temp1: data.daily[i].temp.day
-        //     });
-        // });
         if (!recentLocations.includes(name.toLowerCase())) {
             recentLocations.push(name.toLowerCase());
         }
@@ -124,8 +110,6 @@ const app = {
         app.makeBtn(recentLocations)
     },
     makeBtn: (arr) => {
-        // console.log(data);
-        // console.log(name);
         var add = document.getElementById('cityBank');
         add.innerHTML = "";
 
@@ -138,23 +122,9 @@ const app = {
             addLi.addEventListener("click", function (ev) {
                 console.log(ev.target.textContent)
                 app.getWeather(ev.target.textContent)
-                // var city = data.name;
-                // $('#yourCity').text("City:" + " " + city);
-                // var temp = data.main.temp;
-                // $('#temp').text("Temp:" + " " + temp + " degrees");
-                // var tempIcon = data.weather[0].icon;
-                // $('#tempIcon').attr('src', `https://openweathermap.org/img/wn/${tempIcon}@4x.png`);
-                // var humid = data.main.temp;
-                // $('#humid').text("Humidity:" + " " + humid + "%");
-                // var wind = data.wind.speed;
-                // $('#wind').text("Wind speed:" + " " + wind + " mph");
             })
             add.append(addLi);
         }
-        // addLi.setAttribute("pastCity", data);
-
-        
-
     }
 }
 
@@ -177,12 +147,9 @@ var dateEl = document.getElementById('date')
 var today = moment().format("dddd, MMM Do YY");
 dateEl.textContent = today;
 
-
-
 var recentLocations = [];
 var pastCity = "";
 
-// function addHistory(city)
 
 
 // graveyard:
