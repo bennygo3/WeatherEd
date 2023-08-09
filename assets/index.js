@@ -60,19 +60,19 @@ const app = {
     },
     show5Day: (data2) => {
         console.log(data2);
-
-        for (i = 0; i < 5; i++) {
+        // switched up loop logic
+        for (i = 1; i <= 5; i++) {
 
             var forecastDate = moment.unix(data2.daily[i].dt).format('ddd, MM/DD/YYYY');
-            $('#forecastDate' + i).text(forecastDate);
+            $('#forecastDate' + (i - 1)).text(forecastDate);
             var dayIcon = data2.daily[i].weather[0].icon
-            $('#weatherIcon' + i).attr('src', 'https://openweathermap.org/img/wn/' + dayIcon + '@2x.png');
+            $('#weatherIcon' + (i - 1)).attr('src', 'https://openweathermap.org/img/wn/' + dayIcon + '@2x.png');
             var temp1 = data2.daily[i].temp.day
-            $('#tempFore' + i).text("temp: " + temp1 + " degrees");
+            $('#tempFore' + (i - 1)).text("temp: " + temp1 + " degrees");
             var windyFore = data2.daily[i].wind_speed
-            $('#windyFore' + i).text("Wind speed: " + windyFore + " mph");
+            $('#windyFore' + (i - 1)).text("Wind speed: " + windyFore + " mph");
             var humidityFore = data2.daily[i].humidity
-            $('#humidityFore' + i).text("Humidity: " + humidityFore + "%");
+            $('#humidityFore' + (i - 1)).text("Humidity: " + humidityFore + "%");
 
             // hoisted to current day and city card or func showWeather
             var uv = data2.current.uvi
@@ -94,7 +94,7 @@ const app = {
         }
 
     },
-    storeCity: (name) => { 
+    storeCity: (name) => {
         // save multiple locations to an empty array for a click on callback of data
         // after they are appended below the search bar
         var recentLocations = [];

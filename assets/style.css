@@ -1,9 +1,5 @@
 body{
-    /* background-image: url(images/windowhorizontal.jpeg); */
     background-color:rgb(24, 197, 255);
-    /* background-size:cover;
-    text-align: center;
-    height: 100px; */
 }
 
 #header{
@@ -15,21 +11,19 @@ body{
     background-color: black;
     height: 105px;
     width: 910px;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
     padding: 5px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    outline: solid 1px white;
+    outline: solid 2px yellow;
 }
 
 .search{
     display: flex;
     flex-wrap: wrap;
-    /* margin-left: auto;
-    margin-right: auto; */
     flex-direction: row;
 }
 
@@ -43,9 +37,9 @@ body{
     align-content: center;
     padding: 20px;
     border-radius: 10px;
-    margin: auto 5px auto 120px ;
+    margin: auto 5px auto 20px ;
     width: 380px;
-    outline: solid 1px white;
+    outline: solid 2px yellow;
 }
 
 #city{
@@ -57,10 +51,10 @@ body{
 #cityInput{
     font-family: 'Forum', cursive;
     font-size: 25px;
-    background:rgb(231, 231, 233);
-    padding: 6px;
-    border-radius: 7px;
-    border: black solid 0.5px;
+    background-color:white;
+    padding: 8px;
+    
+    border: black solid 5.5px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
     
@@ -74,8 +68,19 @@ body{
 
 #searchFieldAndBtn{
     display: flex;
-    border: solid white 1px;
-    border-radius: 7px;
+    outline: solid 1px white;
+    border-radius: 3px;
+}
+#searchBtn{
+    border-radius: 0px;
+}
+.material-icons.md-24 {
+    font-size: 25px;
+    color: rgb(231, 231, 233);
+    background-color: black;
+    
+    /* border: 1px yellow solid; */
+    cursor: pointer;
 }
 
 #currentCityCard{
@@ -84,12 +89,12 @@ body{
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 5px;
-    margin-top: 3px;
+    margin-top: 6px;
     border-radius: 10px;
     padding: 20px;
     width: 1000px;
     max-height: 520px;
-    outline: solid 1px white;
+    outline: solid 2px yellow;
     
 }
 
@@ -146,7 +151,7 @@ body{
     justify-content: center;
     text-align: center;
     gap: 9px;
-    margin-bottom: 20px;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     flex-direction: row;
@@ -161,7 +166,7 @@ body{
     width: 250px;
     font-size: 28px;
     margin-bottom: 20px;
-    outline: solid 1px white;
+    outline: solid 2px yellow;
 }
 
 
